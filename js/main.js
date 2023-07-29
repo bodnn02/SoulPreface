@@ -854,3 +854,23 @@ $(document).ready(function (e) {
 $(".m-btn").on("click", function(e) {
     $(".m-menu").toggleClass("opened")
 })
+
+function orderFormUpdate() {
+    var selected_option = $("#order-select").val()
+    var selected_size = $(".size-list__item.selected").text()
+    var selected_color = $(".color-list__item.selected").attr("data-color")
+
+    const selectedItem = order_list.find(item => item.title === selected_option);
+    const sizes = foundItem.characteristics.find(item => item.title === selected_size)
+    const selected_color = foundItem.colors.find(item => item.title === selected_color)
+
+    sizes.content.forEach(function(item) {
+        sizes_list.append(`
+            <li class="characteristics-list__item">
+                <span>${item.title}</span>
+                <span>${item.value}</span>
+            </li>
+        `)
+    })
+
+}

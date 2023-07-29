@@ -790,6 +790,8 @@ b {
 .gallery-ul__item {
     display: none;
     background:#EDEDED;
+    min-width: 70%;
+    height: auto;
 }
 .gallery-ul__item.selected {
     display: flex;
@@ -2346,9 +2348,6 @@ b {
     .gallery-ul__item:not(:last-child) {
         margin-right: 10px;
     }
-    .gallery-ul__item > img {
-        width: auto;
-    }
     .assortment-gallery__footer {
         display: none;
     }
@@ -2439,7 +2438,7 @@ b {
         display: flex;
     }
     .gallery-list__item > img {
-        width: auto;
+        min-width: 100%;
         height: 100%;
     }
     .gallery-list__item:not(:last-child) {
@@ -2447,6 +2446,7 @@ b {
     }
     .order-gallery__footer {
         margin-top: 10px;
+        margin-right: 0;
     }
     .order-gallery__title {
         text-align: left;
@@ -2587,6 +2587,147 @@ b {
     .steps-list {
         grid-template-columns: 1fr;
         gap: 37px;
+    }
+    .carousel-item {
+        flex: 0 0 calc(100% / 1);
+    }
+    .answers-list__item {
+        font-size: 15px;
+        line-height: 22px; /* 146.667% */
+    }
+    .answers-list__item span {
+        white-space: pre-wrap;
+        overflow: visible;
+    }
+    .selector-heading {
+        font-size: 18px;
+        line-height: 25px; /* 138.889% */
+    }
+    .size-list__item {
+        width: calc(29px - 2px);
+        height: calc(29px - 2px);
+
+        font-size: 15px;
+        line-height: normal;
+    }
+    .color-list__item {
+        width: calc(29px - 12px);
+        height: calc(29px - 12px);
+    }
+    .size-selector {
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+    .color-selector {
+        margin-bottom: 20px;
+    }
+    .select {
+        padding: 10px 20px;
+
+        font-size: 13px;
+        line-height: normal;
+    }
+    .complete-selector {
+        margin-bottom: 20px;
+    }
+    .label {
+        font-size: 13px;
+        line-height: 20px;
+    }
+    .complete-selector .select {
+        margin-top: 10px;
+    }
+    .additional-list {
+        margin-top: 10px;
+    }
+    .order-wrapper {
+        gap: 20px;
+    }
+    .additional-selector {
+        margin-bottom: 30px;
+    }
+    .price-wrapper {
+        margin-bottom: 20px;
+        font-size: 18px;
+        line-height: 25px; /* 138.889% */
+    }
+    .reviews-list__item {
+        max-width: 100%;
+        border-radius: 40px;
+        width: fit-content;
+    }
+    .reviews-list__screenshoot {
+        padding: 10px 0;
+        width: 100%;
+    }
+    .steps-list__h4 {
+        font-size: 15px;
+        line-height: 22px; /* 146.667% */
+    }
+    .steps-list__p {
+        font-size: 15px;
+        line-height: 22px; /* 146.667% */
+    }
+    .steps-list__item {
+        padding: 37px 9px;
+    }
+    .answers-list {
+        margin-top: 30px;
+    }
+    .reviews-section .link {
+        margin: 30px auto 0 auto;
+    }
+    .accessories-list__h3 {
+        font-size: 15px;
+        line-height: 22px; /* 146.667% */
+    }
+    .accessories-list__price span:first-child {
+        font-size: 15px;
+        line-height: 22px; /* 146.667% */
+    }
+    .accessories-list__price span:last-child {
+        font-size: 15px;
+        line-height: 22px; /* 146.667% */
+    }
+    .accessories-list__h3 {
+        margin-top: 20px;
+    }
+    .accessories-list {
+        margin-top: 30px;
+    }
+    .select {
+        min-width: unset;
+    }
+    .assortment-tabs {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .characteristics-tabs__item:not(:last-child) {
+        margin-right: 10px;
+    }
+    .characteristics__h3 {
+        margin-right: 10px;
+    }
+    .assortment-tabs__item {
+        padding-bottom: 4px;
+    }
+    .size-selector .link {
+        font-size: 13px;
+        line-height: 20px; /* 153.846% */
+    }
+    .m-menu {
+        width: 100%;
+    }
+}
+@media (max-width: 460px) {
+    .size-selector .link {
+        margin-top: 10px;
+    }
+}
+@media (max-width: 400px) {
+    .characteristics {
+        width: 100%;
+        padding: 20px 0;
     }
 }
 /* Adaptive styles *Stop* */
