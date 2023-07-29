@@ -862,7 +862,7 @@ function orderFormUpdate() {
 
     const selectedItem = order_list.find(item => item.title === selected_option);
     const sizes = foundItem.characteristics.find(item => item.title === selected_size)
-    const selected_color = foundItem.colors.find(item => item.title === selected_color)
+    const color = foundItem.colors.find(item => item.title === selected_color)
 
     sizes.content.forEach(function(item) {
         sizes_list.append(`
