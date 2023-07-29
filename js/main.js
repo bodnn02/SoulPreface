@@ -3,11 +3,13 @@ $(document).on("click", "[data-link]", function (e) {
 
     $(".overlay").addClass("opened")
     $(".overlay-item[data-overlay=" + attr + "]").addClass("opened")
+    scrollDisable()
 })
 
 $(document).on("click", ".overlay-item__close-btn", function (e) {
     $(".overlay").find(".opened").removeClass("opened")
     $(".overlay").removeClass("opened")
+    scrollEnable()
 })
 
 
@@ -873,4 +875,11 @@ function orderFormUpdate() {
         `)
     })
 
+}
+
+function scrollDisable() {
+    $("html,body").css("overflow","hidden");
+}
+function scrollEnable() {
+    $("html,body").css("overflow","auto");
 }
