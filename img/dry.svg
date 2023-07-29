@@ -1,0 +1,13 @@
+<svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame 150" clip-path="url(#clip0_537_1167)">
+<rect width="39" height="39" fill="white"/>
+<rect id="Rectangle 70" x="0.5" y="0.5" width="38" height="38" rx="1.5" stroke="#ADA8CC"/>
+<line id="Line 23" x1="1.02539" y1="9.55657" x2="9.55513" y2="1.02683" stroke="#ADA8CC" stroke-linecap="round"/>
+<line id="Line 24" x1="1.02539" y1="16.7402" x2="16.7393" y2="1.02621" stroke="#ADA8CC" stroke-linecap="round"/>
+</g>
+<defs>
+<clipPath id="clip0_537_1167">
+<rect width="39" height="39" fill="white"/>
+</clipPath>
+</defs>
+</svg>

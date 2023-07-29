@@ -1,0 +1,18 @@
+<svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame 152" clip-path="url(#clip0_537_1180)">
+<rect width="39" height="39" fill="white"/>
+<g id="Group 206">
+<path id="Line 25" d="M8.22828 1L34.7333 1.5001L37.7339 24.5045H1.22695C1.22695 24.5045 -0.0254161 25.0046 3.25213 15.5028C6.52969 6.00095 35.9727 11.0019 35.9727 11.0019" stroke="#ADA8CC"/>
+<circle id="Ellipse 13" cx="29.7165" cy="16.0915" r="2.90789" stroke="#ADA8CC"/>
+</g>
+<path id="Line 26" d="M16.0391 28C19.4238 34 12.4977 34.5248 16.0391 38" stroke="#ADA8CC" stroke-linecap="round"/>
+<path id="Line 28" d="M29.0391 28C32.4238 34 25.4977 34.5248 29.0391 38" stroke="#ADA8CC" stroke-linecap="round"/>
+<path id="Line 27" d="M9.03906 28C12.4238 34 5.49772 34.5248 9.03906 38" stroke="#ADA8CC" stroke-linecap="round"/>
+<path id="Line 29" d="M23.0391 28C26.4238 34 19.4977 34.5248 23.0391 38" stroke="#ADA8CC" stroke-linecap="round"/>
+</g>
+<defs>
+<clipPath id="clip0_537_1180">
+<rect width="39" height="39" fill="white"/>
+</clipPath>
+</defs>
+</svg>
