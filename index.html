@@ -94,10 +94,10 @@
                         </div>
                     </li>
                 </ul>
-                <div class="primary-btn" data-link="order-overlay">
+                <a class="primary-btn" href="#order-section">
                     <span>Выбрать костюм</span>
                     <img src="img/Arrow 5.svg" alt="">
-                </div>
+                </a>
             </div>
         </section>
         <section class="banner-section">
@@ -220,7 +220,7 @@
                         <div class="characteristics">
                             <div class="characteristics-header">
                                 <h3 class="characteristics__h3">Характеристики</h3>
-                                <div class="characteristics-tabs">
+                                <div class="characteristics-tabs" id="assortment-characteristics">
                                     <div class="characteristics-tabs__item selected">XS</div>
                                     <div class="characteristics-tabs__item">S</div>
                                     <div class="characteristics-tabs__item">M</div>
@@ -269,10 +269,10 @@
                                 Крафтовая коробка - при заказе комплекта “Лонгслив + Брюки”
                             </li>
                         </ul>
-                        <div class="primary-btn">
+                        <a class="primary-btn" href="#order-section">
                             <span>Выбрать костюм</span>
                             <img src="img/Arrow 5.svg" alt="">
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <div class="gift-section__bottom">
@@ -310,33 +310,35 @@
                 </div>
             </div>
         </section>
-        <section class="order-section">
+        <section class="order-section" id="order-section">
             <div class="container">
                 <h2 class="section-h2">Идеальный гардероб начинается с пижамы</h2>
                 <div class="order-wrapper">
                     <div class="order-gallery">
                         <div class="order-gallery__content">
-                            <ul class="gallery-list">
-                                <li class="gallery-list__item selected">
-                                    <img src="img/order-gallery-1.png" alt="">
-                                </li>
-                                <li class="gallery-list__item">
-                                    <img src="img/order-gallery-2.png" alt="">
-                                </li>
-                                <li class="gallery-list__item">
-                                    <img src="img/order-gallery-3.png" alt="">
-                                </li>
-                                <li class="gallery-list__item">
-                                    <img src="img/order-gallery-4.png" alt="">
-                                </li>
-                                <li class="gallery-list__item">
-                                    <img src="img/order-gallery-5.png" alt="">
-                                </li>
-                            </ul>
+                            <div class="order-gallery__wrapper">
+                                <ul class="gallery-list" id="order-gallery" data-gallery="0">
+                                    <li class="gallery-list__item selected">
+                                        <img src="img/order-gallery-1.png" alt="">
+                                    </li>
+                                    <li class="gallery-list__item">
+                                        <img src="img/order-gallery-2.png" alt="">
+                                    </li>
+                                    <li class="gallery-list__item">
+                                        <img src="img/order-gallery-3.png" alt="">
+                                    </li>
+                                    <li class="gallery-list__item">
+                                        <img src="img/order-gallery-4.png" alt="">
+                                    </li>
+                                    <li class="gallery-list__item">
+                                        <img src="img/order-gallery-5.png" alt="">
+                                    </li>
+                                </ul>
+                            </div>
                             <div class="gallery-scrollbar">
                                 <div class="gallery-scrollbar__line" style="height: 30%;"></div>
                             </div>
-                            <ul class="gallery-thumbnails">
+                            <ul class="gallery-thumbnails" id="order-thumbnails">
                                 <li class="gallery-thumbnails__item selected">
                                     <img src="img/order-gallery-1.png" alt="">
                                 </li>
@@ -356,7 +358,7 @@
                         </div>
                         <div class="order-gallery__footer">
                             <div class="order-gallery__title">Параметры модели (размер S)</div>
-                            <ul class="characteristics-list selected">
+                            <ul class="characteristics-list" id="order-characteristics">
                                 <li class="characteristics-list__item">
                                     <span>Высота изделия:</span>
                                     <span>50 см</span>
@@ -375,7 +377,7 @@
                     <div class="order-info">
                         <div class="size-selector">
                             <span class="selector-heading">Размер: </span>
-                            <ul class="size-list">
+                            <ul class="size-list" id="order-size-list">
                                 <li class="size-list__item selected">XS</li>
                                 <li class="size-list__item">S</li>
                                 <li class="size-list__item">M</li>
@@ -384,11 +386,11 @@
                         </div>
                         <div class="color-selector">
                             <span class="selector-heading">Цвет: </span>
-                            <div class="color-list">
-                                <div class="color-list__item selected">
+                            <div class="color-list" id="order-color">
+                                <div class="color-list__item" data-color="black">
                                     <div class="color-list__dot" style="background-color: #323232;"></div>
                                 </div>
-                                <div class="color-list__item">
+                                <div class="color-list__item selected" data-color="white">
                                     <div class="color-list__dot" style="background-color: #fff;"></div></div>
                             </div>
                         </div>
@@ -830,36 +832,44 @@
                                     <h3 class="order-form__h3">1. Адрес доставки</h3>
                                     <div class="order-form__content">
                                         <div class="checkbox-wrapper">
-                                            <input class="checkbox" type="checkbox" name="" id="">
-                                            <label class="label" for="">В пункт выдачи <span style="color: #4E4E4E;">– бесплатно</span></label>
+                                            <input class="radio linkedCaller" data-link="delivery-address" type="radio" name="delivery-type" id="delivery-type_default">
+                                            <label class="label" for="delivery-type_default">В пункт выдачи <span style="color: #4E4E4E;">– бесплатно</span></label>
                                         </div>
-                                        <select class="select_address" name="" id="">
-                                            <option value="" selected disabled><b>Выберите пункт выдачи</b></option>
-                                            <option value="">Address</option>
-                                        </select>
+                                        <div class="select-address linkedContent" style="display: none;" data-link="delivery-address" id="order-address_default">
+                                            <div class="select-address__header">
+                                                <input class="select-address__input" placeholder="Выберите пункт выдачи" type="text">
+                                            </div>
+                                            <div class="select-address__content">
+                                                <ul class="address-list">
+                                                    <li class="address-list__item">Address 1</li>
+                                                    <li class="address-list__item">Address 2</li>
+                                                    <li class="address-list__item">Address 3</li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                         <div class="checkbox-wrapper">
-                                            <input class="checkbox" type="checkbox" name="" id="">
-                                            <label class="label" for="">До двери <span style="color: #4E4E4E;">– 299 РУБ.</span></label>
+                                            <input class="radio linkedCaller" data-link="delivery-courier" type="radio" name="delivery-type" id="delivery-type_courier">
+                                            <label class="label" for="delivery-type_courier">До двери <span style="color: #4E4E4E;">– 299 РУБ.</span></label>
                                         </div>
-                                        <input class="input_rounded" placeholder="Адрес" type="text">
+                                        <input class="input_rounded linkedContent" style="display: none;" data-link="delivery-courier" id="order-address_courier" placeholder="Адрес" type="text">
                                     </div>
                                 </div>
                                 <div class="order-form__section">
                                     <h3 class="order-form__h3">2. Способ оплаты</h3>
                                     <div class="order-form__content">
                                         <div class="checkbox-wrapper">
-                                            <input class="checkbox" type="checkbox" name="" id="">
-                                            <label class="label" for="">Онлайн на сайте <span style="color: #4E4E4E;">– скидка 2,5%</span></label>
+                                            <input class="radio" type="radio" name="payment-type" id="payment-online">
+                                            <label class="label" for="payment-online">Онлайн на сайте <span style="color: #4E4E4E;">– скидка 2,5%</span></label>
                                         </div>
                                         <div class="checkbox-wrapper">
-                                            <input class="checkbox" type="checkbox" name="" id="">
-                                            <label class="label" for="">При получении</label>
+                                            <input class="radio" type="radio" name="payment-type" id="payment-after">
+                                            <label class="label" for="payment-after">При получении</label>
                                         </div>
                                         <div class="checkbox-wrapper">
-                                            <input class="checkbox" type="checkbox" name="" id="">
-                                            <label class="label" for="">Подарочный сертификат</label>
+                                            <input class="radio linkedCaller" data-link="order-certificate" type="radio" name="payment-type" id="payment-certificate">
+                                            <label class="label" for="payment-certificate">Подарочный сертификат</label>
                                         </div>
-                                        <div class="promocode-wrapper">
+                                        <div class="promocode-wrapper linkedContent" style="display: none;" data-link="order-certificate">
                                             <input class="input_underline" placeholder="Номер" type="text">
                                             <div class="secondary-btn">Применить</div>
                                         </div>
@@ -958,29 +968,20 @@
                                 </ol>
                                 <div class="size-calculator">
                                     <ul class="size-ranges">
-                                        <li class="size-ranges__item">
+                                        <li class="size-ranges__item" data-range="chest">
                                             <span class="size-ranges__label">Объем груди</span>
-                                            <div class="range">
-                                                <div class="range__line"></div>
-                                                <div class="range__handler" style="left: 36%;"></div>
-                                            </div>
-                                            <span class="size-ranges__value">82 см</span>
+                                            <div class="size-ranges__range"></div>
+                                            <span class="size-ranges__value">64 см</span>
                                         </li>
-                                        <li class="size-ranges__item">
+                                        <li class="size-ranges__item" data-range="waist">
                                             <span class="size-ranges__label">Объем талии</span>
-                                            <div class="range">
-                                                <div class="range__line"></div>
-                                                <div class="range__handler" style="left: 36%;"></div>
-                                            </div>
-                                            <span class="size-ranges__value">82 см</span>
+                                            <div class="size-ranges__range"></div>
+                                            <span class="size-ranges__value">64 см</span>
                                         </li>
-                                        <li class="size-ranges__item">
+                                        <li class="size-ranges__item" data-range="hips">
                                             <span class="size-ranges__label">Объем бедер</span>
-                                            <div class="range">
-                                                <div class="range__line"></div>
-                                                <div class="range__handler" style="left: 36%;"></div>
-                                            </div>
-                                            <span class="size-ranges__value">82 см</span>
+                                            <div class="size-ranges__range"></div>
+                                            <span class="size-ranges__value">64 см</span>
                                         </li>
                                     </ul>
                                     <div class="size-result">
@@ -1029,11 +1030,11 @@
                                         <span class="additional-form__value">Sweet cherry</span>
                                     </h3>
                                     <div class="checkbox-wrapper">
-                                        <input class="checkbox" type="radio" name="" id="">
+                                        <input class="checkbox" type="radio" name="additional-lightcandle" id="additional-lightcandle_1">
                                         <label class="label" for="">Fleur narcotique<span style="color: #4E4E4E;">– скидка 2,5%</span></label>
                                     </div>
                                     <div class="checkbox-wrapper">
-                                        <input class="checkbox" type="radio" name="" id="">
+                                        <input class="checkbox" type="radio" name="additional-lightcandle" id="additional-lightcandle_2">
                                         <label class="label" for="">Sweet cherry<span style="color: #4E4E4E;">– скидка 2,5%</span></label>
                                     </div>
                                     <div class="primary-btn">
@@ -1121,12 +1122,12 @@
                                         <span class="additional-form__value">3 470 РУБ.</span>
                                     </h3>
                                     <div class="checkbox-wrapper">
-                                        <input class="checkbox" type="radio" name="" id="">
-                                        <label class="label" for="">3 470 РУБ.</label>
+                                        <input class="radio" type="radio" name="additional-cert" id="additional-cert_1">
+                                        <label class="label" for="additional-lightcandle_1">3 470 РУБ.</label>
                                     </div>
                                     <div class="checkbox-wrapper">
-                                        <input class="checkbox" type="radio" name="" id="">
-                                        <label class="label" for="">4 199 РУБ.</label>
+                                        <input class="radio" type="radio" name="additional-cert" id="additional-cert_2">
+                                        <label class="label" for="additional-cert_2">4 199 РУБ.</label>
                                     </div>
                                     <div class="primary-btn">
                                         <span>Добавить в заказ</span>
@@ -1140,6 +1141,8 @@
         </div>
     </div>
     <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.touchSwipe.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
