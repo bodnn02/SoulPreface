@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/logo.svg" type="image/x-icon">
+    <meta name="description" content="Купите стильный домашний костюм из муслина в интернет-магазине SOUL PREFACE. Широкий выбор моделей и размеров.">
+    <meta name="keywords" content="домашний костюм, муслин, интернет-магазин, SOUL PREFACE">
 </head>
 <body>
     <header class="header">
@@ -87,7 +89,7 @@
                     <li class="features-list__item">
                         <img class="features-list__icon" src="img/gift.svg" alt="">
                         <div>
-                            <h4 class="features-list__title">Набор резинок для волос</h4>
+                            <h4 class="features-list__title" style="border-bottom: 1px solid #323232;">Набор резинок для волос</h4>
                             <p class="features-list__text">
                                 В подарок при покупке<br> до 9 марта
                             </p>
@@ -263,10 +265,10 @@
                         </p>
                         <ul class="ul_dotted">
                             <li>
-                                Белая коробка - при заказе комплекта “Топ + Брюки”
+                                <b>Белая коробка</b> - при заказе комплекта “Топ + Брюки”
                             </li>
                             <li>
-                                Крафтовая коробка - при заказе комплекта “Лонгслив + Брюки”
+                                <b>Крафтовая коробка</b> - при заказе комплекта “Лонгслив + Брюки”
                             </li>
                         </ul>
                         <a class="primary-btn" href="#order-section">
@@ -357,8 +359,8 @@
                             </ul>
                         </div>
                         <div class="order-gallery__footer">
-                            <div class="order-gallery__title">Параметры модели (размер S)</div>
-                            <ul class="characteristics-list" id="order-characteristics">
+                            <div class="order-gallery__title">Параметры модели <span id="order-characteristics-title">(размер S)</span></div>
+                            <ul class="characteristics-list" id="order-characteristics-list">
                                 <li class="characteristics-list__item">
                                     <span>Высота изделия:</span>
                                     <span>50 см</span>
@@ -377,16 +379,29 @@
                     <div class="order-info">
                         <div class="size-selector">
                             <span class="selector-heading">Размер: </span>
-                            <ul class="size-list" id="order-size-list">
-                                <li class="size-list__item selected">XS</li>
-                                <li class="size-list__item">S</li>
-                                <li class="size-list__item">M</li>
-                            </ul>
-                            <div class="link" data-link="size-helper">Как узнать размер?</div>
+                            <div>
+                                <div class="select">
+                                    <div class="select__heading">
+                                        <span>XS (42)</span>
+                                        <div class="select__arrow">
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <div class="sub-menu">
+                                        <ul class="select-list" id="order-size-list">
+                                            <li class="select-list__item selected" data-size="XS">XS (42)</li>
+                                            <li class="select-list__item" data-size="S">S (44)</li>
+                                            <li class="select-list__item" data-size="M">M (46)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="link" data-link="size-helper">Как узнать размер?</div>
+                            </div>
                         </div>
                         <div class="color-selector">
                             <span class="selector-heading">Цвет: </span>
-                            <div class="color-list" id="order-color">
+                            <div class="color-list" id="order-color-list">
                                 <div class="color-list__item" data-color="black">
                                     <div class="color-list__dot" style="background-color: #323232;"></div>
                                 </div>
@@ -396,36 +411,36 @@
                         </div>
                         <div class="complete-selector">
                             <div class="selector-heading">Комплект:</div>
-                            <select class="select" name="" id="order-select">
-                                <option value="Топ + Брюки" selected>Топ + Брюки</option>
-                                <option value="Лонгслив + Брюки">Лонгслив + Брюки</option>
-                            </select>
+                            <ul class="order-tabs" id="order-tabs-list">
+                                <li class="order-tabs__item selected">Топ + Брюки</li>
+                                <li class="order-tabs__item">Лонгслив + Брюки</li>
+                            </ul>
                         </div>
                         <div class="additional-selector">
                             <div class="selector-heading">Доп. товары</div>
-                            <ul class="additional-list">
-                                <li class="additional-list__item">
+                            <ul class="additional-list" id="order-additional-list">
+                                <li class="additional-list__item" data-additionalTitle="Набор резинок для волос" data-additionalPrice="0">
                                     <div class="checkbox-wrapper">
-                                        <input class="checkbox" checked type="checkbox" name="" id="">
-                                        <label class="label" for="">Набор резинок для волос<span style="color: #6DD03E;"><b> — в подарок</b></span></label>
+                                        <input class="checkbox_squared" disabled checked type="checkbox" name="" id="">
+                                        <label class="label" for="">Набор резинок для волос<span style="color: #6DD03E;"><br><b> — в подарок</b></span></label>
                                     </div>
                                 </li>
-                                <li class="additional-list__item">
+                                <li class="additional-list__item" data-additionalTitle="Свеча с ароматом TOM FORD (Fleur narcotique)" data-additionalPrice="950">
                                     <div class="checkbox-wrapper">
-                                        <input class="checkbox" type="checkbox" name="" id="">
-                                        <label class="label" for="">Свеча с ароматом TOM FORD (Fleur narcotique)</label>
+                                        <input class="checkbox_squared" type="checkbox" name="" id="">
+                                        <label class="label" for="">Свеча с ароматом TOM FORD (Fleur narcotique)<br><b>—  950 руб.</b></label>
                                     </div>
                                 </li>
-                                <li class="additional-list__item">
+                                <li class="additional-list__item" data-additionalTitle="Свеча с ароматом TOM FORD (Sweet cherry)" data-additionalPrice="950">
                                     <div class="checkbox-wrapper">
-                                        <input class="checkbox" type="checkbox" name="" id="">
-                                        <label class="label" for="">Свеча с ароматом TOM FORD (Sweet cherry) <b>—  2499 руб.</b></label>
+                                        <input class="checkbox_squared" type="checkbox" name="" id="">
+                                        <label class="label" for="">Свеча с ароматом TOM FORD (Sweet cherry)<br><b>—  950 руб.</b></label>
                                     </div>
                                 </li>
-                                <li class="additional-list__item">
+                                <li class="additional-list__item" data-additionalTitle="Пушистые тапочки (размер: 38-39)" data-additionalPrice="1200">
                                     <div class="checkbox-wrapper">
-                                        <input class="checkbox" type="checkbox" name="" id="">
-                                        <label class="label" for="">Пушистые тапочки (размер: 38-39) <b>—  2499 руб.</b></label>
+                                        <input class="checkbox_squared" type="checkbox" name="" id="">
+                                        <label class="label" for="">Пушистые тапочки (размер: 38-39)<br><b>—  1200 руб.</b></label>
                                     </div>
                                 </li>
                             </ul>
@@ -832,12 +847,12 @@
                                     <h3 class="order-form__h3">1. Адрес доставки</h3>
                                     <div class="order-form__content">
                                         <div class="checkbox-wrapper">
-                                            <input class="radio linkedCaller" data-link="delivery-address" type="radio" name="delivery-type" id="delivery-type_default">
+                                            <input class="radio linkedCaller" value="В пункт выдачи" data-link="delivery-address" type="radio" name="delivery-type" id="delivery-type_default">
                                             <label class="label" for="delivery-type_default">В пункт выдачи <span style="color: #4E4E4E;">– бесплатно</span></label>
                                         </div>
                                         <div class="select-address linkedContent" style="display: none;" data-link="delivery-address" id="order-address_default">
                                             <div class="select-address__header">
-                                                <input class="select-address__input" placeholder="Выберите пункт выдачи" type="text">
+                                                <input class="select-address__input" required placeholder="Выберите пункт выдачи" type="text">
                                             </div>
                                             <div class="select-address__content">
                                                 <ul class="address-list">
@@ -848,7 +863,7 @@
                                             </div>
                                         </div>
                                         <div class="checkbox-wrapper">
-                                            <input class="radio linkedCaller" data-link="delivery-courier" type="radio" name="delivery-type" id="delivery-type_courier">
+                                            <input class="radio linkedCaller" value="Курьер" data-link="delivery-courier" type="radio" name="delivery-type" id="delivery-type_courier">
                                             <label class="label" for="delivery-type_courier">До двери <span style="color: #4E4E4E;">– 299 РУБ.</span></label>
                                         </div>
                                         <input class="input_rounded linkedContent" style="display: none;" data-link="delivery-courier" id="order-address_courier" placeholder="Адрес" type="text">
@@ -858,15 +873,15 @@
                                     <h3 class="order-form__h3">2. Способ оплаты</h3>
                                     <div class="order-form__content">
                                         <div class="checkbox-wrapper">
-                                            <input class="radio" type="radio" name="payment-type" id="payment-online">
+                                            <input class="radio" value="Онлайн на сайте" type="radio" name="payment-type" id="payment-online">
                                             <label class="label" for="payment-online">Онлайн на сайте <span style="color: #4E4E4E;">– скидка 2,5%</span></label>
                                         </div>
                                         <div class="checkbox-wrapper">
-                                            <input class="radio" type="radio" name="payment-type" id="payment-after">
+                                            <input class="radio" value="При получении" type="radio" name="payment-type" id="payment-after">
                                             <label class="label" for="payment-after">При получении</label>
                                         </div>
                                         <div class="checkbox-wrapper">
-                                            <input class="radio linkedCaller" data-link="order-certificate" type="radio" name="payment-type" id="payment-certificate">
+                                            <input class="radio linkedCaller" value="Подарочный сертификат" data-link="order-certificate" type="radio" name="payment-type" id="payment-certificate">
                                             <label class="label" for="payment-certificate">Подарочный сертификат</label>
                                         </div>
                                         <div class="promocode-wrapper linkedContent" style="display: none;" data-link="order-certificate">
@@ -878,15 +893,15 @@
                                 <div class="order-form__section">
                                     <h3 class="order-form__h3">3. Контактная информация</h3>
                                     <div class="order-form__content">
-                                        <input class="input_rounded" placeholder="Имя" type="text">
-                                        <input class="input_rounded" placeholder="Номер телефона" type="tel">
+                                        <input class="input_rounded" required id="client-name" placeholder="Имя" type="text">
+                                        <input class="input_rounded" required id="tel" placeholder="Номер телефона" type="tel">
                                     </div>
                                 </div>
                                 <div class="order-price">
                                     <span><b>ИТОГО:</b> </span>
                                     <span>4 199 РУБ.</span>
                                 </div>
-                                <button class="primary-btn">Заказать</button>
+                                <button class="primary-btn" id="order-checkout">Заказать</button>
                             </form>
                         </div>
                     </div>
@@ -970,17 +985,17 @@
                                     <ul class="size-ranges">
                                         <li class="size-ranges__item" data-range="chest">
                                             <span class="size-ranges__label">Объем груди</span>
-                                            <div class="size-ranges__range"></div>
+                                            <input class="size-ranges__range" type="range" min="40" max="120" value="82">
                                             <span class="size-ranges__value">64 см</span>
                                         </li>
                                         <li class="size-ranges__item" data-range="waist">
                                             <span class="size-ranges__label">Объем талии</span>
-                                            <div class="size-ranges__range"></div>
+                                            <input class="size-ranges__range" type="range" min="40" max="120" value="68">
                                             <span class="size-ranges__value">64 см</span>
                                         </li>
                                         <li class="size-ranges__item" data-range="hips">
                                             <span class="size-ranges__label">Объем бедер</span>
-                                            <div class="size-ranges__range"></div>
+                                            <input class="size-ranges__range" type="range" min="40" max="120" value="92">
                                             <span class="size-ranges__value">64 см</span>
                                         </li>
                                     </ul>
@@ -1030,12 +1045,12 @@
                                         <span class="additional-form__value">Sweet cherry</span>
                                     </h3>
                                     <div class="checkbox-wrapper">
-                                        <input class="checkbox" type="radio" name="additional-lightcandle" id="additional-lightcandle_1">
-                                        <label class="label" for="">Fleur narcotique<span style="color: #4E4E4E;">– скидка 2,5%</span></label>
+                                        <input class="checkbox" type="checkbox" name="additional-lightcandle" id="additional-lightcandle_1">
+                                        <label class="label" for="">Fleur narcotique</label>
                                     </div>
                                     <div class="checkbox-wrapper">
-                                        <input class="checkbox" type="radio" name="additional-lightcandle" id="additional-lightcandle_2">
-                                        <label class="label" for="">Sweet cherry<span style="color: #4E4E4E;">– скидка 2,5%</span></label>
+                                        <input class="checkbox" type="checkbox" name="additional-lightcandle" id="additional-lightcandle_2">
+                                        <label class="label" for="">Sweet cherry</label>
                                     </div>
                                     <div class="primary-btn">
                                         <span>Добавить в заказ</span>
