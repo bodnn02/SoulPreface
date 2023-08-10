@@ -1097,8 +1097,6 @@ function orderDataUpdate() {
 }
 
 function calculateSummary() {
-    orderDataUpdate()
-
     sum = 0
 
     sum += parseFloat(order_data.option_price)
@@ -1163,9 +1161,9 @@ $(document).on("click", ".summary-list__item", function (e) {
     if($(this).is(":first-child")) {
         return false
     } else {
-        var indexToRemove = order_data.selected_additionals.findIndex(item => item.title === $(this).children(".summary-list__title").text());
-        order_data.selected_additionals.splice(indexToRemove, 1);
-        updateCheckout()
+        order_data.selected_additionals.splice(($(this).index() - 1), 1);
+        $(this).remove()
+        updateSummary()
     }
 })
 
@@ -1226,5 +1224,6 @@ $('input[type="checkbox"]').on('change', function() {
 
 
 $(document).ready(function (e) {
+    orderDataUpdate()
     updateSummary()
 })
