@@ -3503,6 +3503,9 @@ input[type="checkbox"]:disabled + label {
         display: grid;
         grid-template-columns: 1fr;
     }
+    .address-list__item {
+        font-size: 13px;
+    }
 }
 @media (max-width: 600px) {
     .main-section {
@@ -3534,6 +3537,9 @@ input[type="checkbox"]:disabled + label {
     .reviews-list__screenshoot {
         padding: 10px 0;
         width: 100%;
+    }
+    .select {
+        max-width: unset;
     }
 }
 /* Adaptive styles *Stop* */
