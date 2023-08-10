@@ -2,6 +2,7 @@ order_list = [
     {
         id: 1,
         title: "Топ + Брюки",
+        price: 3500,
         colors: [
             {
                 id: 1,
@@ -28,7 +29,8 @@ order_list = [
                         id: 5,
                         src: "img/order-gallery-10.png"
                     },
-                ]
+                ],
+                preview_src: "img/order-preview-1.jpg"
             },
             {
                 id: 2,
@@ -55,7 +57,8 @@ order_list = [
                         id: 5,
                         src: "img/order-gallery-5.png"
                     },
-                ]
+                ],
+                preview_src: "img/order-preview-2.jpg"
             }
         ],
         characteristics: [
@@ -65,18 +68,18 @@ order_list = [
                 content: [
                     {
                         id: 1,
-                        title: "Высота изделия:",
-                        value: "50 см"
+                        title: "Обхват груди:",
+                        value: "89 см"
                     },
                     {
                         id: 2,
-                        title: "Ширина изделия:",
-                        value: "50 см"
+                        title: "Обхват талии:",
+                        value: "70 см"
                     },
                     {
                         id: 3,
-                        title: "Длина рукава:",
-                        value: "54 см"
+                        title: "Обхват бедер:",
+                        value: "98 см"
                     },
                 ]
             },
@@ -86,18 +89,18 @@ order_list = [
                 content: [
                     {
                         id: 1,
-                        title: "Высота изделия:",
-                        value: "52 см"
+                        title: "Обхват груди:",
+                        value: "89 см"
                     },
                     {
                         id: 2,
-                        title: "Ширина изделия:",
-                        value: "52 см"
+                        title: "Обхват талии:",
+                        value: "70 см"
                     },
                     {
                         id: 3,
-                        title: "Длина рукава:",
-                        value: "52 см"
+                        title: "Обхват бедер:",
+                        value: "98 см"
                     },
                 ]
             },
@@ -107,18 +110,18 @@ order_list = [
                 content: [
                     {
                         id: 1,
-                        title: "Высота изделия:",
-                        value: "54 см"
+                        title: "Обхват груди:",
+                        value: "89 см"
                     },
                     {
                         id: 2,
-                        title: "Ширина изделия:",
-                        value: "54 см"
+                        title: "Обхват талии:",
+                        value: "70 см"
                     },
                     {
                         id: 3,
-                        title: "Длина рукава:",
-                        value: "54 см"
+                        title: "Обхват бедер:",
+                        value: "98 см"
                     },
                 ]
             }
@@ -127,6 +130,7 @@ order_list = [
     {
         id: 2,
         title: "Лонгслив + Брюки",
+        price: 3500,
         colors: [
             {
                 id: 1,
@@ -153,7 +157,8 @@ order_list = [
                         id: 5,
                         src: "img/order-gallery-15.png"
                     },
-                ]
+                ],
+                preview_src: "img/order-preview-4.jpg"
             },
             {
                 id: 2,
@@ -180,7 +185,8 @@ order_list = [
                         id: 5,
                         src: "img/order-gallery-20.png"
                     },
-                ]
+                ],
+                preview_src: "img/order-preview-3.jpg"
             }
         ],
         characteristics: [
@@ -190,18 +196,18 @@ order_list = [
                 content: [
                     {
                         id: 1,
-                        title: "Высота изделия:",
-                        value: "50 см"
+                        title: "Обхват груди:",
+                        value: "85 см"
                     },
                     {
                         id: 2,
-                        title: "Ширина изделия:",
-                        value: "50 см"
+                        title: "Обхват талии:",
+                        value: "59 см"
                     },
                     {
                         id: 3,
-                        title: "Длина рукава:",
-                        value: "54 см"
+                        title: "Обхват бедер:",
+                        value: "95 см"
                     },
                 ]
             },
@@ -211,18 +217,18 @@ order_list = [
                 content: [
                     {
                         id: 1,
-                        title: "Высота изделия:",
-                        value: "52 см"
+                        title: "Обхват груди:",
+                        value: "85 см"
                     },
                     {
                         id: 2,
-                        title: "Ширина изделия:",
-                        value: "52 см"
+                        title: "Обхват талии:",
+                        value: "59 см"
                     },
                     {
                         id: 3,
-                        title: "Длина рукава:",
-                        value: "52 см"
+                        title: "Обхват бедер:",
+                        value: "95 см"
                     },
                 ]
             },
@@ -232,18 +238,18 @@ order_list = [
                 content: [
                     {
                         id: 1,
-                        title: "Высота изделия:",
-                        value: "54 см"
+                        title: "Обхват груди:",
+                        value: "85 см"
                     },
                     {
                         id: 2,
-                        title: "Ширина изделия:",
-                        value: "54 см"
+                        title: "Обхват талии:",
+                        value: "59 см"
                     },
                     {
                         id: 3,
-                        title: "Длина рукава:",
-                        value: "54 см"
+                        title: "Обхват бедер:",
+                        value: "95 см"
                     },
                 ]
             }
@@ -677,6 +683,15 @@ $("a[href^='#']").on("click", function(event) {
 
     // Получаем целевой блок, к которому нужно выполнить скролл
     const targetBlock = $($(this).attr("href"));
+    // Проверяем, есть ли среди родителей целевого блока элемент с классом 'overlay'
+    const hasOverlayAncestor = targetBlock.closest(".overlay")
+
+    // Если есть родитель с классом 'overlay', не выполняем скролл
+    if (hasOverlayAncestor) {
+        $(".overlay").find(".opened").removeClass("opened")
+        $(".overlay").removeClass("opened")
+        scrollEnable()
+    }
 
     // Выполняем плавный скролл к целевому блоку
     $("html, body").animate({
@@ -737,15 +752,87 @@ $(".carousel__next").on("click", function(event) {
     }
 });
 
-$("#order-select").on("change", function(e) {
+$(document).on("click", ".select-list__item", function (e) {
+    $(this).parent().children(".select-list__item").removeClass("selected")
+    $(this).addClass("selected")
+
+    $(this).parent().parent().parent().find(".select__heading span").text($(this).text())
+})
+
+function scrollDisable() {
+    $("html,body").css("overflow","hidden");
+}
+function scrollEnable() {
+    $("html,body").css("overflow","auto");
+}
+
+$(document).on("click", function(e) {
+    $(".linkedCaller").each(function(item) {
+        attr = $(this).attr("data-link")
+    
+        if($(this).is(":checked")) {
+            $(".linkedContent[data-link="+attr+"]").show();
+        } 
+        if(!$(this).is(":checked")) {
+            $(".linkedContent[data-link="+attr+"]").hide();
+        }
+    })
+})
+
+$(".address-list__item").on("click", function(e) {
+    $(this).parent().parent().parent().find(".select-address__input").val($(this).text())
+    $(this).parent().parent().parent().removeClass("opened")
+})
+
+$(".select-address__input").on("input", function(e) {
+    address_list = $(this).parent().parent().find(".address-list").children(".address-list__item")
+    var searchValue = $(this).val().trim().toLowerCase();
+
+    if($(this).val() != "") {
+        $(this).parent().parent().addClass("opened")
+
+        address_list.each(function(item) {
+            if($(this).text().trim().toLowerCase().includes(searchValue)) {
+                $(this).show()
+            } else {
+                $(this).hide()
+            }
+        })
+    } else {
+        $(this).parent().parent().removeClass("opened")
+    }
+})
+
+
+
+  $(".order-gallery__title").on("click", function(e) {
+    $(this).parent().toggleClass("opened")
+  })
+
+$(".select__heading").on("click", function(e) {
+    $(this).parent().toggleClass("opened")
+})
+$(".select-list__item").on("click", function(e) {
+    $(this).parent().children(".select-list__item").removeClass("selected")
+    $(this).addClass("selected")
+})
+
+
+
+
+/* Order section *Start* */
+
+$(".order-tabs__item").on("click", function(e) {
+    $(this).parent().children(".order-tabs__item").removeClass("selected")
+    $(this).addClass("selected")
+
     orderSizesUpdate()
     orderCharacteristicsUpdate()
     orderGalleryUpdate()
+    updateSummary()
 })
-$(document).on("click", ".size-list__item", function (e) {
-    $(this).parent().children(".size-list__item").removeClass("selected")
-    $(this).addClass("selected")
 
+$(document).on("click", "#order-size-list .select-list__item", function (e) {
     orderCharacteristicsUpdate()
     galleryScrollbarUpdate()
 })
@@ -775,8 +862,8 @@ $(".m-btn").on("click", function(e) {
 })
 
 function orderFormUpdate() {
-    var selected_option = $("#order-select").val()
-    var selected_size = $(".size-list__item.selected").text()
+    var selected_option = $("#order-tabs-list").children(".selected").text()
+    var selected_size = $("#order-size-list").children(".selected").attr("data-size")
     var selected_color = $(".color-list__item.selected").attr("data-color")
 
     const selectedItem = order_list.find(item => item.title === selected_option);
@@ -794,12 +881,13 @@ function orderFormUpdate() {
 }
 
 function orderCharacteristicsUpdate() {
-    var selected_option = $("#order-select").val()
-    var selected_size = $(".size-list__item.selected").text()
-    var characteristics_list = $("#order-characteristics")
+    var selected_option = $("#order-tabs-list").children(".selected").text()
+    var selected_size = $("#order-size-list").children(".selected").attr("data-size")
+    var characteristics_list = $("#order-characteristics-list")
 
     const selectedItem = order_list.find(item => item.title === selected_option);
     const characteristics = selectedItem.characteristics.find(item => item.title === selected_size)
+    console.log(selected_size)
 
     $(characteristics_list).empty()
 
@@ -814,7 +902,7 @@ function orderCharacteristicsUpdate() {
 }
 
 function orderSizesUpdate() {
-    var selected_option = $("#order-select").val()
+    var selected_option = $("#order-tabs-list").children(".selected").text()
     var sizes_list = $("#order-sizes-list")
 
     const selectedItem = order_list.find(item => item.title === selected_option);
@@ -836,8 +924,8 @@ function orderSizesUpdate() {
 }
 
 function orderGalleryUpdate() {
-    var selected_option = $("#order-select").val()
-    var selected_color = $("#order-color").find(".selected").attr("data-color")
+    var selected_option = $("#order-tabs-list").children(".selected").text()
+    var selected_color = $("#order-color-list").find(".selected").attr("data-color")
     var gallery = $("#order-gallery")
     var thumbnails = $("#order-thumbnails")
 
@@ -875,14 +963,6 @@ function orderGalleryUpdate() {
     })
 }
 
-function scrollDisable() {
-    $("html,body").css("overflow","hidden");
-}
-function scrollEnable() {
-    $("html,body").css("overflow","auto");
-}
-
-
 function galleryNext() {
     var gallery = $(".gallery-list")
     var height = $(gallery).children(".gallery-list__item").eq(0).height();
@@ -890,10 +970,10 @@ function galleryNext() {
     var length = $(gallery).children(".gallery-list__item").length
 
     if(parseInt(current_index) + 1 >= length) {
-        $(gallery).css("transform", `translate3d(0px, -${(0) * height}px, 0px)`)
-        $(gallery).attr("data-gallery", 0)
-        galleryScrollbarUpdate()
-        updateThumbnails()
+        // $(gallery).css("transform", `translate3d(0px, -${(0) * height}px, 0px)`)
+        // $(gallery).attr("data-gallery", 0)
+        // galleryScrollbarUpdate()
+        // updateThumbnails()
     } else {
         $(gallery).css("transform", `translate3d(0px, -${(parseInt(current_index) + 1) * height}px, 0px)`)
         $(gallery).attr("data-gallery", parseInt(current_index) + 1)
@@ -908,10 +988,10 @@ function galleryPrev() {
     var length = $(gallery).children(".gallery-list__item").length
 
     if(parseInt(current_index) - 1 < 0) {
-        $(gallery).css("transform", `translate3d(0px, -${(length - 1) * height}px, 0px)`)
-        $(gallery).attr("data-gallery", (length - 1))
-        galleryScrollbarUpdate()
-        updateThumbnails()
+        // $(gallery).css("transform", `translate3d(0px, -${(length - 1) * height}px, 0px)`)
+        // $(gallery).attr("data-gallery", (length - 1))
+        // galleryScrollbarUpdate()
+        // updateThumbnails()
     } else {
         $(gallery).css("transform", `translate3d(0px, -${(parseInt(current_index) - 1) * height}px, 0px)`)
         $(gallery).attr("data-gallery", parseInt(current_index) - 1)
@@ -965,106 +1045,186 @@ $(".order-gallery__wrapper").on("wheel", function (event) {
 });
 
 
+
+
+
 var order_data = {
-    order_items: [
-        {
-            id: 1,
-            title: "Item title",
-            price: "3400"
-        }
-    ]
+    selected_additionals: []
 }
 
 function orderDataUpdate() {
-    
-}
+    var selected_option = $("#order-tabs-list").children(".selected").text()
+    var selected_size = $("#order-size-list").children(".selected").attr("data-size")
+    var selected_color = $("#order-color-list").children(".selected").attr("data-color")
+    const option_price = order_list.find(item => item.title === selected_option).price;
+    var selected_additionals = []
+    var delivery_type = $("input[name='delivery-type']:checked").val()
+    var address = ""
+    var payment_type = $("input[name='payment-type']:checked").val()
+    var client_name = $("#client-name").val()
+    var tel = $("#tel").val()
 
-$(document).on("click", function(e) {
-    $(".linkedCaller").each(function(item) {
-        attr = $(this).attr("data-link")
-    
-        if($(this).is(":checked")) {
-            $(".linkedContent[data-link="+attr+"]").show();
-        } 
-        if(!$(this).is(":checked")) {
-            $(".linkedContent[data-link="+attr+"]").hide();
+    $("#order-additional-list").children("li").each(function(item) {
+        if($(this).find('input[type="checkbox"]').prop('checked')) {
+            selected_additionals.push({
+                title: $(this).attr("data-additionalTitle"),
+                price: $(this).attr("data-additionalPrice"),
+            })
         }
     })
-})
 
+    switch(delivery_type) {
+        case "В пункт выдачи":
+            address = "test"
+            break;
+        case "Курьер":
+            address = "test"
+            break;
+    }
+
+    order_data = {
+        selected_option: selected_option,
+        option_price: option_price,
+        selected_size: selected_size,
+        selected_color: selected_color,
+        selected_additionals: selected_additionals,
+        delivery_type: delivery_type,
+        address: address,
+        payment_type: payment_type,
+        client_name: client_name,
+        tel: tel
+    }
+}
+
+function calculateSummary() {
+    orderDataUpdate()
+
+    sum = 0
+
+    sum += parseFloat(order_data.option_price)
+
+    order_data.selected_additionals.forEach(item => {
+        sum += parseFloat(item.price);
+    });
+
+    return sum
+}
+
+function updateSummary() {
+    $(".order-price span:last-child").text(calculateSummary() + " РУБ.")
+    $("#summary-price").text(calculateSummary() + " РУБ.")
+}
+
+$(".additional-list__item").on("click", function(e) {
+    orderDataUpdate()
+    updateSummary()
+})
 
 $("#place-order").on("click", function(e) {
     orderDataUpdate()
+    updateCheckout()
+
+    const selected_option = order_list.find(item => item.title === order_data.selected_option);
+    const selected_color = selected_option.colors.find(item => item.title === order_data.selected_color);
+
+    $(".order-overlay__left").children("img").attr("src", selected_color.preview_src)
 })
 
-$(".address-list__item").on("click", function(e) {
-    $(this).parent().parent().parent().find(".select-address__input").val($(this).text())
-    $(this).parent().parent().parent().removeClass("opened")
-})
+function updateCheckout() {
+    var summary_list = $(".summary-list")
+    var summary_price = $(".order-overlay").find(".order-price span:last-child")
 
-$(".select-address__input").on("input", function(e) {
-    address_list = $(this).parent().parent().find(".address-list").children(".address-list__item")
-    var searchValue = $(this).val().trim().toLowerCase();
+    $(summary_list).empty()
 
-    if($(this).val() != "") {
-        $(this).parent().parent().addClass("opened")
+    $(summary_list).append(`
+        <li class="summary-list__item">
+            <span class="summary-list__title">
+                ${order_data.selected_option}
+            </span>
+            <span class="summary-list__price">${order_data.option_price} РУБ.</span>
+        </li>
+    `)
 
-        address_list.each(function(item) {
-            if($(this).text().trim().toLowerCase().includes(searchValue)) {
-                $(this).show()
-            } else {
-                $(this).hide()
-            }
-        })
+    order_data.selected_additionals.forEach(function(item) {
+        $(summary_list).append(`
+            <li class="summary-list__item">
+                <span class="summary-list__title">
+                    ${item.title}
+                </span>
+                <span class="summary-list__price">${item.price} РУБ.</span>
+            </li>
+        `)
+    })
+
+    updateSummary()
+}
+
+$(document).on("click", ".summary-list__item", function (e) {
+    if($(this).is(":first-child")) {
+        return false
     } else {
-        $(this).parent().parent().removeClass("opened")
+        var indexToRemove = order_data.selected_additionals.findIndex(item => item.title === $(this).children(".summary-list__title").text());
+        order_data.selected_additionals.splice(indexToRemove, 1);
+        updateCheckout()
     }
 })
 
-const sizeTable = [
-    { size: "42/XS", chest: [82, 85], waist: [64, 68], hips: [91, 94] },
-    { size: "44/S", chest: [86, 89], waist: [68, 72], hips: [95, 98] },
-    { size: "46/M", chest: [90, 93], waist: [72, 76], hips: [99, 102] },
-    { size: "48/L", chest: [94, 97], waist: [76, 80], hips: [103, 106] },
-  ];
+$(document).on("click", "#order-checkout", function (e) {
+    orderDataUpdate()
+    return false;
+})
 
-  $(document).ready(function() {
-    // Используем метод slider() для создания слайдера
-    $(".size-ranges__range").slider({
-      min: 64,
-      max: 120,
-      slide: function(event, ui) {
-        const selectedRange = $(this).parent().data("range");
-        const inputValue = ui.value;
-        const size = getSizeBasedOnRange(selectedRange, inputValue);
-        $(this).parent().find(".size-ranges__value").text(inputValue + " см")
-        $(".size-result__value").text(size);
-      }
-    });
-  });
 
-  // Функция для подбора размера исходя из выбранного диапазона и значения
-  function getSizeBasedOnRange(selectedRange, inputValue) {
-    let closestSize = "Size not found";
-    let closestWidth = Infinity;
+/* Order section *Stop* */
 
-    for (const sizeData of sizeTable) {
-      const range = sizeData[selectedRange];
-      if (inputValue >= range[0] && inputValue <= range[1]) {
-        return sizeData.size; // Возвращаем точный размер, если значение входит в диапазон
-      }
+$(".size-ranges__range").on("input", function(e) {
+    const sizeTable = [
+        { size: "42/XS", chest: [82, 85], waist: [64, 68], hips: [91, 94] },
+        { size: "44/S", chest: [86, 89], waist: [68, 72], hips: [95, 98] },
+        { size: "46/M", chest: [90, 93], waist: [72, 76], hips: [99, 102] },
+        { size: "48/L", chest: [94, 97], waist: [76, 80], hips: [103, 106] },
+    ];
 
-      const width = Math.min(Math.abs(inputValue - range[0]), Math.abs(inputValue - range[1]));
-      if (width < closestWidth) {
-        closestWidth = width;
-        closestSize = sizeData.size;
-      }
+    var chest_size = parseFloat($('[data-range="chest"]').children(".size-ranges__range").val());
+    var waist_size = parseFloat($('[data-range="waist"]').children(".size-ranges__range").val());
+    var hips_size = parseFloat($('[data-range="hips"]').children(".size-ranges__range").val());
+
+    $('[data-range="chest"]').children(".size-ranges__value").text(chest_size + "см")
+    $('[data-range="waist"]').children(".size-ranges__value").text(waist_size + "см")
+    $('[data-range="hips"]').children(".size-ranges__value").text(hips_size + "см")
+
+    var closestSize = null;
+    var minDistance = Number.MAX_SAFE_INTEGER;
+
+    for (var i = 0; i < sizeTable.length; i++) {
+        var sizeData = sizeTable[i];
+        var chestDistance = Math.abs((sizeData.chest[0] + sizeData.chest[1]) / 2 - chest_size);
+        var waistDistance = Math.abs((sizeData.waist[0] + sizeData.waist[1]) / 2 - waist_size);
+        var hipsDistance = Math.abs((sizeData.hips[0] + sizeData.hips[1]) / 2 - hips_size);
+        
+        var totalDistance = chestDistance + waistDistance + hipsDistance;
+
+        if (totalDistance < minDistance) {
+            minDistance = totalDistance;
+            closestSize = sizeData.size;
+        }
     }
 
-    return closestSize; // Возвращаем ближайший более широкий размер
-  }
+    $(".size-result__value").text(closestSize);
+});
+
+$('[data-checkbox]').on('change', function() {
+    var dataAttrValue = $(this).data('checkbox'); // Значение атрибута data-checkbox
+
+    // Находим все checkbox'ы с тем же атрибутом и устанавливаем им такое же состояние
+    $('[data-checkbox="' + dataAttrValue + '"]').prop('checked', $(this).prop('checked'));
+});
+
+$('input[type="checkbox"]').on('change', function() {
+    updateSummary()
+});
 
 
-  $(".order-gallery__title").on("click", function(e) {
-    $(this).parent().toggleClass("opened")
-  })
+$(document).ready(function (e) {
+    updateSummary()
+})
