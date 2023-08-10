@@ -1226,4 +1226,7 @@ $('input[type="checkbox"]').on('change', function() {
 $(document).ready(function (e) {
     orderDataUpdate()
     updateSummary()
+    if ($(window).width() >= 800) {
+        $(".order-gallery__wrapper").css("height", $(".gallery-list__item.selected").outerHeight());
+    }
 })
