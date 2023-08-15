@@ -711,7 +711,7 @@ $(".carousel__prev").on("click", function(event) {
         items_per_page = 1
     }
 
-    pages = ($(content_list).children(".carousel-item").length / items_per_page)
+    pages = Math.ceil($(content_list).children(".carousel-item").length / items_per_page)
     current_page = $(content_list).attr("data-page")
 
     if(current_page - 1 < 0) {
@@ -737,8 +737,7 @@ $(".carousel__next").on("click", function(event) {
         items_per_page = 1
     }
 
-    pages = ($(content_list).children(".carousel-item").length / items_per_page)
-    console.log(pages)
+    pages = Math.ceil($(content_list).children(".carousel-item").length / items_per_page)
     current_page = $(content_list).attr("data-page")
 
     if((parseInt(current_page) + 1) == pages) {
@@ -753,10 +752,13 @@ $(".carousel__next").on("click", function(event) {
 });
 
 $(document).on("click", ".select-list__item", function (e) {
+    var parent = $(this).closest(".select")
+
     $(this).parent().children(".select-list__item").removeClass("selected")
     $(this).addClass("selected")
 
-    $(this).parent().parent().parent().find(".select__heading span").text($(this).text())
+    $(parent).removeClass("opened")
+    $(parent).find(".select__heading span").text($(this).text())
 })
 
 function scrollDisable() {
@@ -859,6 +861,7 @@ $(document).ready(function (e) {
 
 $(".m-btn").on("click", function(e) {
     $(".m-menu").toggleClass("opened")
+    $(this).toggleClass("opened")
 })
 
 function orderFormUpdate() {
