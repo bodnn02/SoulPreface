@@ -1227,7 +1227,7 @@ $('input[type="checkbox"]').on('change', function() {
 
 function adjustGalleryHeight() {
     if ($(window).width() >= 800) {
-        $(".order-gallery__wrapper").css("height", $(".gallery-list__item.selected").outerHeight());
+        $(".order-gallery__wrapper").css("height", $(".gallery-list__item.selected img").outerHeight());
     } else {
         $(".order-gallery__wrapper").css("height", 'auto');
     }

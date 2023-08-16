@@ -1166,7 +1166,10 @@ b {
     gap: 79px;
 }
 .order-gallery {
-    position: relative;
+    position: sticky;
+    top: 20px;
+
+    height: fit-content;
 }
 .order-gallery__wrapper {
     width: 100%;
@@ -1274,7 +1277,7 @@ b {
     display: none;
 
     padding: 20px 30px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     max-width: 624px;
 
     background-color: rgba(255, 255, 255, 0.90);
@@ -1294,6 +1297,7 @@ b {
 }
 .order-parameters__title {
     margin-right: 30px;
+    margin-bottom: 20px;
 
     color: #323232;
     font-family: Gilroy;
@@ -2376,7 +2380,7 @@ b {
     min-width: 161px;
 }
 .select__heading {
-    padding: 13px 20px;
+    padding: 10px 20px;
     width: 100%;
 
     display: flex;
@@ -2390,7 +2394,7 @@ b {
 
     color: #323232;
     font-family: Gilroy;
-    font-size: 22px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
@@ -2513,14 +2517,14 @@ b {
     flex-wrap: wrap;
 }
 .order-tabs__item {
-    padding: 13px 20px;
+    padding: 10px 20px;
 
     border-radius: 10px;
     border: 2px solid #ADADAD;
 
     color: #ADADAD;
     font-family: Gilroy;
-    font-size: 22px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
@@ -2692,7 +2696,20 @@ input[type="checkbox"]:disabled + label {
     .order-tabs {
         margin-top: 10px;
     }
-
+    .complete-selector {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .size-selector {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .size-selector .selector-heading {
+        margin-bottom: 20px;
+    }
+    .additional-list__item {
+        max-width: 300px;
+    }
 }
 @media (max-width: 1346px) {
     .characteristics-list {
@@ -2880,6 +2897,12 @@ input[type="checkbox"]:disabled + label {
     }
     .main-section .primary-btn {
         margin: 85% auto 0 auto;
+    }
+    .order-gallery {
+        position: relative;
+    }
+    .additional-list__item {
+        max-width: unset;
     }
 }
 @media (max-width: 800px) {
@@ -3078,11 +3101,8 @@ input[type="checkbox"]:disabled + label {
         margin-right: 10px;
     }
     .order-gallery__footer {
-        margin-top: 10px;
-        margin-right: 0;
-
         width: 100%;
-        margin: 10px 0 0 0;
+        margin: 10px 0 20px 0;
         position: unset;
         flex-direction: column;
     }
@@ -3300,6 +3320,7 @@ input[type="checkbox"]:disabled + label {
     .size-selector {
         margin-bottom: 20px;
         align-items: flex-start;
+        flex-direction: row;
     }
     .size-selector > div {
         margin-left: 20px;
