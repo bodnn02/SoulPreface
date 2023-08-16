@@ -424,13 +424,16 @@ b {
     font-weight: 400;
     line-height: 39px; /* 121.875% */
 }
+.comfort-section__h2 + .comfort-section__h3 {
+    margin-top: 20px;
+}
 .comfort-section__wrapper {
     margin-top: 70px;
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
-    gap: 29px;
+    gap: 30px;
 }
 .comfort-section__banner {
     width: 100%;
@@ -438,14 +441,14 @@ b {
 .advantages-list {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 30px;
 }
 .advantages-list__item {
 }
 .comfort-section__h4 {
     color: #323232;
     font-family: Gilroy;
-    font-size: 27px;
+    font-size: 22px;
     font-style: normal;
     font-weight: 600;
     line-height: 34px; /* 125.926% */
@@ -453,10 +456,13 @@ b {
 .comfort-section__p {
     color: #323232;
     font-family: Gilroy;
-    font-size: 22px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 300;
     line-height: 29px; /* 131.818% */
+}
+.comfort-section__h4 + .comfort-section__p {
+    margin-top: 10px;
 }
 .link {
     width: fit-content;
@@ -478,7 +484,7 @@ b {
     opacity: .5;
 }
 .advantages-list + .link {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 /* Comfort section *Stop* */
@@ -1282,6 +1288,7 @@ b {
 
     background-color: rgba(255, 255, 255, 0.90);
     backdrop-filter: blur(3.5px);
+    border-radius: 10px;
 
     animation: fadeOut ease-out .2s;
 }

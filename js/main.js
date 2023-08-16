@@ -64,49 +64,7 @@ order_list = [
         characteristics: [
             {
                 id: 1,
-                title: "XS",
-                content: [
-                    {
-                        id: 1,
-                        title: "Обхват груди:",
-                        value: "89 см"
-                    },
-                    {
-                        id: 2,
-                        title: "Обхват талии:",
-                        value: "70 см"
-                    },
-                    {
-                        id: 3,
-                        title: "Обхват бедер:",
-                        value: "98 см"
-                    },
-                ]
-            },
-            {
-                id: 2,
                 title: "S",
-                content: [
-                    {
-                        id: 1,
-                        title: "Обхват груди:",
-                        value: "89 см"
-                    },
-                    {
-                        id: 2,
-                        title: "Обхват талии:",
-                        value: "70 см"
-                    },
-                    {
-                        id: 3,
-                        title: "Обхват бедер:",
-                        value: "98 см"
-                    },
-                ]
-            },
-            {
-                id: 3,
-                title: "M",
                 content: [
                     {
                         id: 1,
@@ -193,48 +151,6 @@ order_list = [
             {
                 id: 1,
                 title: "XS",
-                content: [
-                    {
-                        id: 1,
-                        title: "Обхват груди:",
-                        value: "85 см"
-                    },
-                    {
-                        id: 2,
-                        title: "Обхват талии:",
-                        value: "59 см"
-                    },
-                    {
-                        id: 3,
-                        title: "Обхват бедер:",
-                        value: "95 см"
-                    },
-                ]
-            },
-            {
-                id: 2,
-                title: "S",
-                content: [
-                    {
-                        id: 1,
-                        title: "Обхват груди:",
-                        value: "85 см"
-                    },
-                    {
-                        id: 2,
-                        title: "Обхват талии:",
-                        value: "59 см"
-                    },
-                    {
-                        id: 3,
-                        title: "Обхват бедер:",
-                        value: "95 см"
-                    },
-                ]
-            },
-            {
-                id: 3,
-                title: "M",
                 content: [
                     {
                         id: 1,
@@ -814,12 +730,6 @@ $(".select-address__input").on("input", function(e) {
 $(".select__heading").on("click", function(e) {
     $(this).parent().toggleClass("opened")
 })
-$(".select-list__item").on("click", function(e) {
-    $(this).parent().children(".select-list__item").removeClass("selected")
-    $(this).addClass("selected")
-})
-
-
 
 
 /* Order section *Start* */
@@ -832,11 +742,6 @@ $(".order-tabs__item").on("click", function(e) {
     orderCharacteristicsUpdate()
     orderGalleryUpdate()
     updateSummary()
-})
-
-$(document).on("click", "#order-size-list .select-list__item", function (e) {
-    orderCharacteristicsUpdate()
-    galleryScrollbarUpdate()
 })
 
 $(document).on("click", ".color-list__item", function (e) {
@@ -885,12 +790,12 @@ function orderFormUpdate() {
 
 function orderCharacteristicsUpdate() {
     var selected_option = $("#order-tabs-list").children(".selected").text()
-    var selected_size = $("#order-size-list").children(".selected").attr("data-size")
     var characteristics_list = $("#order-characteristics-list")
 
     const selectedItem = order_list.find(item => item.title === selected_option);
-    const characteristics = selectedItem.characteristics.find(item => item.title === selected_size)
-    console.log(selected_size)
+    const characteristics = selectedItem.characteristics[0]
+
+    $("#order-characteristics-title").text("Параметры модели (размер " + characteristics.title + ")")
 
     $(characteristics_list).empty()
 
