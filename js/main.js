@@ -11,23 +11,23 @@ order_list = [
                 gallery_items: [
                     {
                         id: 1,
-                        src: "img/order-gallery-6.png"
+                        src: "img/order-gallery-6.webp"
                     },
                     {
                         id: 2,
-                        src: "img/order-gallery-7.png"
+                        src: "img/order-gallery-7.webp"
                     },
                     {
                         id: 3,
-                        src: "img/order-gallery-8.png"
+                        src: "img/order-gallery-8.webp"
                     },
                     {
                         id: 4,
-                        src: "img/order-gallery-9.png"
+                        src: "img/order-gallery-9.webp"
                     },
                     {
                         id: 5,
-                        src: "img/order-gallery-10.png"
+                        src: "img/order-gallery-10.webp"
                     },
                 ],
                 preview_src: "img/order-preview-1.jpg"
@@ -39,23 +39,23 @@ order_list = [
                 gallery_items: [
                     {
                         id: 1,
-                        src: "img/order-gallery-1.png"
+                        src: "img/order-gallery-1.webp"
                     },
                     {
                         id: 2,
-                        src: "img/order-gallery-2.png"
+                        src: "img/order-gallery-2.webp"
                     },
                     {
                         id: 3,
-                        src: "img/order-gallery-3.png"
+                        src: "img/order-gallery-3.webp"
                     },
                     {
                         id: 4,
-                        src: "img/order-gallery-4.png"
+                        src: "img/order-gallery-4.webp"
                     },
                     {
                         id: 5,
-                        src: "img/order-gallery-5.png"
+                        src: "img/order-gallery-5.webp"
                     },
                 ],
                 preview_src: "img/order-preview-2.jpg"
@@ -139,23 +139,23 @@ order_list = [
                 gallery_items: [
                     {
                         id: 1,
-                        src: "img/order-gallery-11.png"
+                        src: "img/order-gallery-11.webp"
                     },
                     {
                         id: 2,
-                        src: "img/order-gallery-12.png"
+                        src: "img/order-gallery-12.webp"
                     },
                     {
                         id: 3,
-                        src: "img/order-gallery-13.png"
+                        src: "img/order-gallery-13.webp"
                     },
                     {
                         id: 4,
-                        src: "img/order-gallery-14.png"
+                        src: "img/order-gallery-14.webp"
                     },
                     {
                         id: 5,
-                        src: "img/order-gallery-15.png"
+                        src: "img/order-gallery-15.webp"
                     },
                 ],
                 preview_src: "img/order-preview-4.jpg"
@@ -167,23 +167,23 @@ order_list = [
                 gallery_items: [
                     {
                         id: 1,
-                        src: "img/order-gallery-16.png"
+                        src: "img/order-gallery-16.webp"
                     },
                     {
                         id: 2,
-                        src: "img/order-gallery-17.png"
+                        src: "img/order-gallery-17.webp"
                     },
                     {
                         id: 3,
-                        src: "img/order-gallery-18.png"
+                        src: "img/order-gallery-18.webp"
                     },
                     {
                         id: 4,
-                        src: "img/order-gallery-19.png"
+                        src: "img/order-gallery-19.webp"
                     },
                     {
                         id: 5,
-                        src: "img/order-gallery-20.png"
+                        src: "img/order-gallery-20.webp"
                     },
                 ],
                 preview_src: "img/order-preview-3.jpg"
@@ -262,15 +262,15 @@ assortment_list = [
         gallery_items: [
             {
                 id: 1,
-                src: "img/gallery-item.png"
+                src: "img/gallery-item.webp"
             },
             {
                 id: 2,
-                src: "img/gallery-item-2.png"
+                src: "img/gallery-item-2.webp"
             },
             {
                 id: 3,
-                src: "img/gallery-item-3.png"
+                src: "img/gallery-item-3.webp"
             },
         ],
         characteristics: [
@@ -361,15 +361,15 @@ assortment_list = [
         gallery_items: [
             {
                 id: 1,
-                src: "img/gallery-item-4.png"
+                src: "img/gallery-item-4.webp"
             },
             {
                 id: 2,
-                src: "img/gallery-item-5.png"
+                src: "img/gallery-item-5.webp"
             },
             {
                 id: 3,
-                src: "img/gallery-item-6.png"
+                src: "img/gallery-item-6.webp"
             },
         ],
         characteristics: [
@@ -460,15 +460,15 @@ assortment_list = [
         gallery_items: [
             {
                 id: 1,
-                src: "img/gallery-item-7.png"
+                src: "img/gallery-item-7.webp"
             },
             {
                 id: 2,
-                src: "img/gallery-item-8.png"
+                src: "img/gallery-item-8.webp"
             },
             {
                 id: 3,
-                src: "img/gallery-item-9.png"
+                src: "img/gallery-item-9.webp"
             },
         ],
         characteristics: [
@@ -1225,11 +1225,17 @@ $('input[type="checkbox"]').on('change', function() {
     updateSummary()
 });
 
+function adjustGalleryHeight() {
+    if ($(window).width() >= 800) {
+        $(".order-gallery__wrapper").css("height", $(".gallery-list__item.selected").outerHeight());
+    } else {
+        $(".order-gallery__wrapper").css("height", 'auto');
+    }
+}
+
 
 $(document).ready(function (e) {
     orderDataUpdate()
     updateSummary()
-    if ($(window).width() >= 800) {
-        $(".order-gallery__wrapper").css("height", $(".gallery-list__item.selected").outerHeight());
-    }
+    adjustGalleryHeight();
 })
