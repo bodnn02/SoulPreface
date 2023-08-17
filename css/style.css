@@ -842,6 +842,9 @@ b {
 .assortment-section__h2 + .assortment-section__h3 {
     margin-top: 20px;
 }
+.assortment-section .characteristics-list__item:first-child:last-child {
+    margin: 0 auto!important;
+}
 .assortment-wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -2552,6 +2555,7 @@ b {
 }
 .checkbox_squared {
     position: relative;
+    margin: 0;
 
     appearance: none;
     flex-shrink: 0;
@@ -2716,6 +2720,14 @@ input[type="checkbox"]:disabled + label {
     }
     .additional-list__item {
         max-width: 300px;
+    }
+    .assortment-description__p {
+        font-size: 18px;
+        line-height: 25px; /* 138.889% */
+    }
+    .assortment-description__h4 {
+        font-size: 22px;
+        line-height: 29px; /* 131.818% */
     }
     .assortment-description__p {
         font-size: 18px;
