@@ -1132,7 +1132,14 @@ $('input[type="checkbox"]').on('change', function() {
 
 function adjustGalleryHeight() {
     if ($(window).width() >= 800) {
-        $(".order-gallery__wrapper").css("height", $(".gallery-list__item.selected img").outerHeight());
+        var selectedImage = $(".gallery-list__item.selected img");
+
+        selectedImage.on('load', function() {
+            $(".order-gallery__wrapper").css("height", selectedImage.outerHeight());
+        });
+        if (selectedImage[0].complete || selectedImage[0].naturalHeight > 0) {
+            $(".order-gallery__wrapper").css("height", selectedImage.outerHeight());
+        }
     } else {
         $(".order-gallery__wrapper").css("height", 'auto');
     }
