@@ -1,3 +1,329 @@
+
+/* Functions *Start* */
+
+function assortmentGalleryUpdate() {
+    selected_tab = $(".assortment-tabs").find(".selected").attr("data-tab")
+    selected_characteristics = $("#assortment-characteristics").find(".selected").text()
+
+    gallery_items = $(".assortment-gallery").find(".gallery-ul")
+    paggination_items = $(".assortment-gallery").find(".paggination-ul")
+    characteristics_items = $("#assortment-characteristics").parent().parent().parent().find(".characteristics-list")
+    description_items = $(".assortment-description").children("ul")
+
+    $(gallery_items).empty()
+    $(paggination_items).empty()
+
+    assortment_list[selected_tab].gallery_items.forEach(function(item) {
+        if(item.id == 1) {
+            gallery_items.append(`
+                <li class="gallery-ul__item selected">
+                    <img src="${item.src}" alt="">
+                </li>
+            `);
+
+            paggination_items.append(`
+                <li class="paggination-ul__item selected"></li>
+            `);
+        }
+        if(item.id > 1) {
+            gallery_items.append(`
+                <li class="gallery-ul__item">
+                    <img src="${item.src}" alt="">
+                </li>
+            `);
+
+            paggination_items.append(`
+                <li class="paggination-ul__item"></li>
+            `);
+        }
+    });
+
+    $(characteristics_items).empty()
+
+    characteristics = assortment_list[selected_tab].characteristics.find(item => item.title === selected_characteristics)
+
+    characteristics.content.forEach(function(item) {
+        characteristics_items.append(`
+            <li class="characteristics-list__item">
+                <span>${item.title}</span>
+                <span>${item.value}</span>
+            </li>
+        `);
+    });
+
+    $(description_items).empty()
+
+    assortment_list[selected_tab].description.forEach(function(item) {
+        description_items.append(`
+            <li>
+                <h4 class="assortment-description__h4">${item.title}</h4>
+                <p class="assortment-description__p">${item.text}</p>
+            </li>
+        `);
+    });
+}
+
+function galleryScrollbarUpdate() {
+    scrollbar_line = $(".gallery-scrollbar__line")
+    current_index = $(scrollbar_line).parent().parent().find(".gallery-list").attr("data-gallery")
+    length = $(scrollbar_line).parent().parent().find(".gallery-list").children(".gallery-list__item").length
+
+    $(scrollbar_line).css("height", ((parseInt(current_index) + 1)/length) * 100 + "%")
+}
+
+function orderFormUpdate() {
+    var selected_option = $("#order-tabs-list").children(".selected").text()
+    var selected_size = $("#order-size-list").children(".selected").attr("data-size")
+    var selected_color = $(".color-list__item.selected").attr("data-color")
+
+    const selectedItem = order_list.find(item => item.title === selected_option);
+    const sizes = foundItem.characteristics.find(item => item.title === selected_size)
+    const color = foundItem.colors.find(item => item.title === selected_color)
+
+    sizes.content.forEach(function(item) {
+        sizes_list.append(`
+            <li class="characteristics-list__item">
+                <span>${item.title}</span>
+                <span>${item.value}</span>
+            </li>
+        `)
+    })
+}
+
+function orderCharacteristicsUpdate() {
+    var selected_option = $("#order-tabs-list").children(".selected").text()
+    var characteristics_list = $("#order-characteristics-list")
+
+    const selectedItem = order_list.find(item => item.title === selected_option);
+    const characteristics = selectedItem.characteristics[0]
+
+    $("#order-characteristics-title").text("Параметры модели (размер " + characteristics.title + ")")
+
+    $(characteristics_list).empty()
+
+    characteristics.content.forEach(function(item) {
+        characteristics_list.append(`
+            <li class="characteristics-list__item">
+                <span>${item.title}</span>
+                <span>${item.value}</span>
+            </li>
+        `)
+    })
+}
+
+function orderSizesUpdate() {
+    var selected_option = $("#order-tabs-list").children(".selected").text()
+    var sizes_list = $("#order-sizes-list")
+
+    const selectedItem = order_list.find(item => item.title === selected_option);
+
+    $(sizes_list).empty()
+
+    selectedItem.characteristics.forEach(function(item) {
+        if(item.id == 1) {
+            sizes_list.append(`
+                <li class="size-list__item selected">${item.title}</li>
+            `)
+        }
+        if(item.id > 1) {
+            sizes_list.append(`
+                <li class="size-list__item">${item.title}</li>
+            `)
+        }
+    })
+}
+
+function orderGalleryUpdate() {
+    var selected_option = $("#order-tabs-list").children(".selected").text()
+    var selected_color = $("#order-color-list").find(".selected").attr("data-color")
+    var gallery = $("#order-gallery")
+    var thumbnails = $("#order-thumbnails")
+
+    const selectedItem = order_list.find(item => item.title === selected_option);
+    const color = selectedItem.colors.find(item => item.title === selected_color)
+
+    $(gallery).empty()
+    $(thumbnails).empty()
+
+    color.gallery_items.forEach(function(item) {
+        if(item.id == 1) {
+            gallery.append(`
+                <li class="gallery-list__item selected">
+                    <img src="${item.src}" alt="">
+                </li>
+            `)
+            thumbnails.append(`
+                <li class="gallery-thumbnails__item selected">
+                    <img src="${item.src}" alt="">
+                </li>
+            `)
+        }
+        if(item.id > 1) {
+            gallery.append(`
+                <li class="gallery-list__item">
+                    <img src="${item.src}" alt="">
+                </li>
+            `)
+            thumbnails.append(`
+                <li class="gallery-thumbnails__item selected">
+                    <img src="${item.src}" alt="">
+                </li>
+            `)
+        }
+    })
+}
+
+function galleryNext() {
+    var gallery = $(".gallery-list")
+    var height = $(gallery).children(".gallery-list__item").eq(0).height();
+    var current_index = $(gallery).attr("data-gallery")
+    var length = $(gallery).children(".gallery-list__item").length
+
+    if(parseInt(current_index) + 1 >= length) {
+        // $(gallery).css("transform", `translate3d(0px, -${(0) * height}px, 0px)`)
+        // $(gallery).attr("data-gallery", 0)
+        // galleryScrollbarUpdate()
+        // updateThumbnails()
+    } else {
+        $(gallery).css("transform", `translate3d(0px, -${(parseInt(current_index) + 1) * height}px, 0px)`)
+        $(gallery).attr("data-gallery", parseInt(current_index) + 1)
+        galleryScrollbarUpdate()
+        updateThumbnails()
+    }
+}
+function galleryPrev() {
+    var gallery = $(".gallery-list")
+    var height = $(gallery).children(".gallery-list__item").eq(0).height();
+    var current_index = $(gallery).attr("data-gallery")
+    var length = $(gallery).children(".gallery-list__item").length
+
+    if(parseInt(current_index) - 1 < 0) {
+        // $(gallery).css("transform", `translate3d(0px, -${(length - 1) * height}px, 0px)`)
+        // $(gallery).attr("data-gallery", (length - 1))
+        // galleryScrollbarUpdate()
+        // updateThumbnails()
+    } else {
+        $(gallery).css("transform", `translate3d(0px, -${(parseInt(current_index) - 1) * height}px, 0px)`)
+        $(gallery).attr("data-gallery", parseInt(current_index) - 1)
+        galleryScrollbarUpdate()
+        updateThumbnails()
+    }
+}
+function updateThumbnails() {
+    $("#order-thumbnails").children(".gallery-thumbnails__item").removeClass("selected")
+    $("#order-thumbnails").children(".gallery-thumbnails__item").eq(parseInt($("#order-gallery").attr("data-gallery"))).addClass("selected")
+}
+
+function orderDataUpdate() {
+    var selected_option = $("#order-tabs-list").children(".selected").text()
+    var selected_size = $("#order-size-list").children(".selected").attr("data-size")
+    var selected_color = $("#order-color-list").children(".selected").attr("data-color")
+    const option_price = order_list.find(item => item.title === selected_option).price;
+    var selected_additionals = []
+    var delivery_type = $("input[name='delivery-type']:checked").val()
+    var address = ""
+    var payment_type = $("input[name='payment-type']:checked").val()
+    var client_name = $("#client-name").val()
+    var tel = $("#tel").val()
+
+    $("#order-additional-list").children("li").each(function(item) {
+        if($(this).find('input[type="checkbox"]').prop('checked')) {
+            selected_additionals.push({
+                title: $(this).attr("data-additionalTitle"),
+                price: $(this).attr("data-additionalPrice"),
+            })
+        }
+    })
+
+    switch(delivery_type) {
+        case "В пункт выдачи":
+            address = "test"
+            break;
+        case "Курьер":
+            address = "test"
+            break;
+    }
+
+    order_data = {
+        selected_option: selected_option,
+        option_price: option_price,
+        selected_size: selected_size,
+        selected_color: selected_color,
+        selected_additionals: selected_additionals,
+        delivery_type: delivery_type,
+        address: address,
+        payment_type: payment_type,
+        client_name: client_name,
+        tel: tel
+    }
+}
+
+function calculateSummary() {
+    sum = 0
+
+    sum += parseFloat(order_data.option_price)
+
+    order_data.selected_additionals.forEach(item => {
+        sum += parseFloat(item.price);
+    });
+
+    return sum
+}
+
+function updateSummary() {
+    $(".order-price span:last-child").text(calculateSummary() + " РУБ.")
+    $("#summary-price").text(calculateSummary() + " РУБ.")
+}
+
+function updateCheckout() {
+    var summary_list = $(".summary-list")
+    var summary_price = $(".order-overlay").find(".order-price span:last-child")
+
+    $(summary_list).empty()
+
+    $(summary_list).append(`
+        <li class="summary-list__item">
+            <span class="summary-list__title">
+                ${order_data.selected_option}
+            </span>
+            <span class="summary-list__price">${order_data.option_price} РУБ.</span>
+        </li>
+    `)
+
+    order_data.selected_additionals.forEach(function(item) {
+        $(summary_list).append(`
+            <li class="summary-list__item">
+                <span class="summary-list__title">
+                    ${item.title}
+                </span>
+                <span class="summary-list__price">${item.price} РУБ.</span>
+            </li>
+        `)
+    })
+
+    updateSummary()
+}
+
+function adjustGalleryHeight() {
+    if ($(window).width() >= 800) {
+        var selectedImage = $(".gallery-list__item.selected img");
+
+        selectedImage.on('load', function() {
+            $(".order-gallery__wrapper").css("height", selectedImage.outerHeight());
+        });
+        if (selectedImage[0].complete || selectedImage[0].naturalHeight > 0) {
+            $(".order-gallery__wrapper").css("height", selectedImage.outerHeight());
+        }
+    } else {
+        $(".order-gallery__wrapper").css("height", 'auto');
+    }
+}
+
+/* Functions *Stop* */
+
+
+/* Variables *Start* */
+
 order_list = [
     {
         id: 1,
@@ -442,6 +768,15 @@ assortment_list = [
     }
 ]
 
+var order_data = {
+    selected_additionals: []
+}
+
+/* Variables *Stop* */
+
+
+/* Handlers *Start* */
+
 $(document).on("click", "[data-link]", function (e) {
     attr = $(this).attr("data-link")
 
@@ -470,69 +805,6 @@ $(".assortment-tabs__item").on("click", function (e) {
 
     assortmentGalleryUpdate() 
 });
-
-function assortmentGalleryUpdate() {
-    selected_tab = $(".assortment-tabs").find(".selected").attr("data-tab")
-    selected_characteristics = $("#assortment-characteristics").find(".selected").text()
-
-    gallery_items = $(".assortment-gallery").find(".gallery-ul")
-    paggination_items = $(".assortment-gallery").find(".paggination-ul")
-    characteristics_items = $("#assortment-characteristics").parent().parent().parent().find(".characteristics-list")
-    description_items = $(".assortment-description").children("ul")
-
-    $(gallery_items).empty()
-    $(paggination_items).empty()
-
-    assortment_list[selected_tab].gallery_items.forEach(function(item) {
-        if(item.id == 1) {
-            gallery_items.append(`
-                <li class="gallery-ul__item selected">
-                    <img src="${item.src}" alt="">
-                </li>
-            `);
-
-            paggination_items.append(`
-                <li class="paggination-ul__item selected"></li>
-            `);
-        }
-        if(item.id > 1) {
-            gallery_items.append(`
-                <li class="gallery-ul__item">
-                    <img src="${item.src}" alt="">
-                </li>
-            `);
-
-            paggination_items.append(`
-                <li class="paggination-ul__item"></li>
-            `);
-        }
-    });
-
-    $(characteristics_items).empty()
-
-    characteristics = assortment_list[selected_tab].characteristics.find(item => item.title === selected_characteristics)
-
-    characteristics.content.forEach(function(item) {
-        characteristics_items.append(`
-            <li class="characteristics-list__item">
-                <span>${item.title}</span>
-                <span>${item.value}</span>
-            </li>
-        `);
-    });
-
-    $(description_items).empty()
-
-    assortment_list[selected_tab].description.forEach(function(item) {
-        description_items.append(`
-            <li>
-                <h4 class="assortment-description__h4">${item.title}</h4>
-                <p class="assortment-description__p">${item.text}</p>
-            </li>
-        `);
-    });
-}
-
 
 $(document).on("click", "[data-pagginator] .pagginator__next", function (e) {
     attr = $(this).parent().attr("data-pagginator")
@@ -721,8 +993,6 @@ $(".select-address__input").on("input", function(e) {
     }
 })
 
-
-
   $(".order-gallery__title").on("click", function(e) {
     $(this).parent().toggleClass("opened")
   })
@@ -730,7 +1000,6 @@ $(".select-address__input").on("input", function(e) {
 $(".select__heading").on("click", function(e) {
     $(this).parent().toggleClass("opened")
 })
-
 
 /* Order section *Start* */
 
@@ -752,165 +1021,11 @@ $(document).on("click", ".color-list__item", function (e) {
     galleryScrollbarUpdate()
 })
 
-function galleryScrollbarUpdate() {
-    scrollbar_line = $(".gallery-scrollbar__line")
-    current_index = $(scrollbar_line).parent().parent().find(".gallery-list").attr("data-gallery")
-    length = $(scrollbar_line).parent().parent().find(".gallery-list").children(".gallery-list__item").length
-
-    $(scrollbar_line).css("height", ((parseInt(current_index) + 1)/length) * 100 + "%")
-}
-
-$(document).ready(function (e) {
-    galleryScrollbarUpdate()
-})
-
 $(".m-btn").on("click", function(e) {
     $(".m-menu").toggleClass("opened")
     $(this).toggleClass("opened")
 })
 
-function orderFormUpdate() {
-    var selected_option = $("#order-tabs-list").children(".selected").text()
-    var selected_size = $("#order-size-list").children(".selected").attr("data-size")
-    var selected_color = $(".color-list__item.selected").attr("data-color")
-
-    const selectedItem = order_list.find(item => item.title === selected_option);
-    const sizes = foundItem.characteristics.find(item => item.title === selected_size)
-    const color = foundItem.colors.find(item => item.title === selected_color)
-
-    sizes.content.forEach(function(item) {
-        sizes_list.append(`
-            <li class="characteristics-list__item">
-                <span>${item.title}</span>
-                <span>${item.value}</span>
-            </li>
-        `)
-    })
-}
-
-function orderCharacteristicsUpdate() {
-    var selected_option = $("#order-tabs-list").children(".selected").text()
-    var characteristics_list = $("#order-characteristics-list")
-
-    const selectedItem = order_list.find(item => item.title === selected_option);
-    const characteristics = selectedItem.characteristics[0]
-
-    $("#order-characteristics-title").text("Параметры модели (размер " + characteristics.title + ")")
-
-    $(characteristics_list).empty()
-
-    characteristics.content.forEach(function(item) {
-        characteristics_list.append(`
-            <li class="characteristics-list__item">
-                <span>${item.title}</span>
-                <span>${item.value}</span>
-            </li>
-        `)
-    })
-}
-
-function orderSizesUpdate() {
-    var selected_option = $("#order-tabs-list").children(".selected").text()
-    var sizes_list = $("#order-sizes-list")
-
-    const selectedItem = order_list.find(item => item.title === selected_option);
-
-    $(sizes_list).empty()
-
-    selectedItem.characteristics.forEach(function(item) {
-        if(item.id == 1) {
-            sizes_list.append(`
-                <li class="size-list__item selected">${item.title}</li>
-            `)
-        }
-        if(item.id > 1) {
-            sizes_list.append(`
-                <li class="size-list__item">${item.title}</li>
-            `)
-        }
-    })
-}
-
-function orderGalleryUpdate() {
-    var selected_option = $("#order-tabs-list").children(".selected").text()
-    var selected_color = $("#order-color-list").find(".selected").attr("data-color")
-    var gallery = $("#order-gallery")
-    var thumbnails = $("#order-thumbnails")
-
-    const selectedItem = order_list.find(item => item.title === selected_option);
-    const color = selectedItem.colors.find(item => item.title === selected_color)
-
-    $(gallery).empty()
-    $(thumbnails).empty()
-
-    color.gallery_items.forEach(function(item) {
-        if(item.id == 1) {
-            gallery.append(`
-                <li class="gallery-list__item selected">
-                    <img src="${item.src}" alt="">
-                </li>
-            `)
-            thumbnails.append(`
-                <li class="gallery-thumbnails__item selected">
-                    <img src="${item.src}" alt="">
-                </li>
-            `)
-        }
-        if(item.id > 1) {
-            gallery.append(`
-                <li class="gallery-list__item">
-                    <img src="${item.src}" alt="">
-                </li>
-            `)
-            thumbnails.append(`
-                <li class="gallery-thumbnails__item selected">
-                    <img src="${item.src}" alt="">
-                </li>
-            `)
-        }
-    })
-}
-
-function galleryNext() {
-    var gallery = $(".gallery-list")
-    var height = $(gallery).children(".gallery-list__item").eq(0).height();
-    var current_index = $(gallery).attr("data-gallery")
-    var length = $(gallery).children(".gallery-list__item").length
-
-    if(parseInt(current_index) + 1 >= length) {
-        // $(gallery).css("transform", `translate3d(0px, -${(0) * height}px, 0px)`)
-        // $(gallery).attr("data-gallery", 0)
-        // galleryScrollbarUpdate()
-        // updateThumbnails()
-    } else {
-        $(gallery).css("transform", `translate3d(0px, -${(parseInt(current_index) + 1) * height}px, 0px)`)
-        $(gallery).attr("data-gallery", parseInt(current_index) + 1)
-        galleryScrollbarUpdate()
-        updateThumbnails()
-    }
-}
-function galleryPrev() {
-    var gallery = $(".gallery-list")
-    var height = $(gallery).children(".gallery-list__item").eq(0).height();
-    var current_index = $(gallery).attr("data-gallery")
-    var length = $(gallery).children(".gallery-list__item").length
-
-    if(parseInt(current_index) - 1 < 0) {
-        // $(gallery).css("transform", `translate3d(0px, -${(length - 1) * height}px, 0px)`)
-        // $(gallery).attr("data-gallery", (length - 1))
-        // galleryScrollbarUpdate()
-        // updateThumbnails()
-    } else {
-        $(gallery).css("transform", `translate3d(0px, -${(parseInt(current_index) - 1) * height}px, 0px)`)
-        $(gallery).attr("data-gallery", parseInt(current_index) - 1)
-        galleryScrollbarUpdate()
-        updateThumbnails()
-    }
-}
-function updateThumbnails() {
-    $("#order-thumbnails").children(".gallery-thumbnails__item").removeClass("selected")
-    $("#order-thumbnails").children(".gallery-thumbnails__item").eq(parseInt($("#order-gallery").attr("data-gallery"))).addClass("selected")
-}
 $(document).on("click", ".gallery-thumbnails__item", function (e) {
     gallery = $(this).parent().parent().find(".gallery-list").children(".gallery-list__item")
     var height = $(gallery).eq(0).height();
@@ -952,75 +1067,6 @@ $(".order-gallery__wrapper").on("wheel", function (event) {
     } 
 });
 
-
-
-
-
-var order_data = {
-    selected_additionals: []
-}
-
-function orderDataUpdate() {
-    var selected_option = $("#order-tabs-list").children(".selected").text()
-    var selected_size = $("#order-size-list").children(".selected").attr("data-size")
-    var selected_color = $("#order-color-list").children(".selected").attr("data-color")
-    const option_price = order_list.find(item => item.title === selected_option).price;
-    var selected_additionals = []
-    var delivery_type = $("input[name='delivery-type']:checked").val()
-    var address = ""
-    var payment_type = $("input[name='payment-type']:checked").val()
-    var client_name = $("#client-name").val()
-    var tel = $("#tel").val()
-
-    $("#order-additional-list").children("li").each(function(item) {
-        if($(this).find('input[type="checkbox"]').prop('checked')) {
-            selected_additionals.push({
-                title: $(this).attr("data-additionalTitle"),
-                price: $(this).attr("data-additionalPrice"),
-            })
-        }
-    })
-
-    switch(delivery_type) {
-        case "В пункт выдачи":
-            address = "test"
-            break;
-        case "Курьер":
-            address = "test"
-            break;
-    }
-
-    order_data = {
-        selected_option: selected_option,
-        option_price: option_price,
-        selected_size: selected_size,
-        selected_color: selected_color,
-        selected_additionals: selected_additionals,
-        delivery_type: delivery_type,
-        address: address,
-        payment_type: payment_type,
-        client_name: client_name,
-        tel: tel
-    }
-}
-
-function calculateSummary() {
-    sum = 0
-
-    sum += parseFloat(order_data.option_price)
-
-    order_data.selected_additionals.forEach(item => {
-        sum += parseFloat(item.price);
-    });
-
-    return sum
-}
-
-function updateSummary() {
-    $(".order-price span:last-child").text(calculateSummary() + " РУБ.")
-    $("#summary-price").text(calculateSummary() + " РУБ.")
-}
-
 $(".additional-list__item").on("click", function(e) {
     orderDataUpdate()
     updateSummary()
@@ -1035,35 +1081,6 @@ $("#place-order").on("click", function(e) {
 
     $(".order-overlay__left").children("img").attr("src", selected_color.preview_src)
 })
-
-function updateCheckout() {
-    var summary_list = $(".summary-list")
-    var summary_price = $(".order-overlay").find(".order-price span:last-child")
-
-    $(summary_list).empty()
-
-    $(summary_list).append(`
-        <li class="summary-list__item">
-            <span class="summary-list__title">
-                ${order_data.selected_option}
-            </span>
-            <span class="summary-list__price">${order_data.option_price} РУБ.</span>
-        </li>
-    `)
-
-    order_data.selected_additionals.forEach(function(item) {
-        $(summary_list).append(`
-            <li class="summary-list__item">
-                <span class="summary-list__title">
-                    ${item.title}
-                </span>
-                <span class="summary-list__price">${item.price} РУБ.</span>
-            </li>
-        `)
-    })
-
-    updateSummary()
-}
 
 $(document).on("click", ".summary-list__item", function (e) {
     if($(this).is(":first-child")) {
@@ -1130,23 +1147,10 @@ $('input[type="checkbox"]').on('change', function() {
     updateSummary()
 });
 
-function adjustGalleryHeight() {
-    if ($(window).width() >= 800) {
-        var selectedImage = $(".gallery-list__item.selected img");
-
-        selectedImage.on('load', function() {
-            $(".order-gallery__wrapper").css("height", selectedImage.outerHeight());
-        });
-        if (selectedImage[0].complete || selectedImage[0].naturalHeight > 0) {
-            $(".order-gallery__wrapper").css("height", selectedImage.outerHeight());
-        }
-    } else {
-        $(".order-gallery__wrapper").css("height", 'auto');
-    }
-}
-
+/* Handlers *Stop* */
 
 $(document).ready(function (e) {
+    galleryScrollbarUpdate()
     orderDataUpdate()
     updateSummary()
     adjustGalleryHeight();
